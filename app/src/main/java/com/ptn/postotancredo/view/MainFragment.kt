@@ -18,6 +18,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMain2Binding
     private val calendarViewModel = CalendarViewModel()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+
     companion object {
         fun newInstance() = MainFragment()
     }
@@ -54,20 +55,21 @@ class MainFragment : Fragment() {
 
     }
 
-    private fun configClicks(){
-        binding.dentist.setOnClickListener {
+    private fun configClicks() {
+        binding.appointment.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             bottomSheetBehavior.peekHeight = 0
         }
     }
-    private fun checkBottomSheet(){
-        if(bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED){
+
+    private fun checkBottomSheet() {
+        if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
             bottomSheetBehavior.peekHeight = 0
 
         }
     }
 
-    private fun closeSchueldingScreen(){
+    private fun closeSchueldingScreen() {
         binding.closeButton.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }

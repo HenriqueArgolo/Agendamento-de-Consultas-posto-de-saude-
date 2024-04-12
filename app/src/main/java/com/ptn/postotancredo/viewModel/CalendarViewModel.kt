@@ -9,6 +9,7 @@ import java.util.TimeZone
 class CalendarViewModel : ViewModel() {
     val calendar = Calendar.getInstance(TimeZone.getTimeZone("America/Sao_Paulo"))
 
+
     fun formatedDate(textView: TextView, datePicker: DatePicker){
 
         datePicker.minDate

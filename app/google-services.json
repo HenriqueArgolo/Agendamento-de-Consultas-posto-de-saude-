@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "564333019719",
+    "project_id": "posto-de-saude-1f0de",
+    "storage_bucket": "posto-de-saude-1f0de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564333019719:android:baac68319895b1701b6762",
+        "android_client_info": {
+          "package_name": "com.ptn.postotancredo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwE-2C4E6uH_BNp8OEbvlJhZED9Dc_hto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

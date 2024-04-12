@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+
         android:orientation="horizontal">
 
         <TextView
@@ -27,14 +28,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
-        android:background="@drawable/top_border_radios"
+        android:background="@color/white"
         android:orientation="vertical" >
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            tools:listitem="@layout/history_object"/>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:src="@drawable/empty" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="@string/seu_hist_rico_est_vazio"/>
+
+
+        </LinearLayout>
+
+
+
 
 
     </LinearLayout>
