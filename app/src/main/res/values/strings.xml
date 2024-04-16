@@ -14,4 +14,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="agendar">Agendar</string>
     <string name="seu_hist_rico_est_vazio">Seu histórico está vazio.</string>
+    <string name="digite_seu_email">Digite seu email.</string>
+    <string name="fa_a_login_com_sua_conta">Faça login com sua conta</string>
+    <string name="esqueceu_sua_senha">Esqueceu sua senha?</string>
+    <string name="registrar_se">Registrar-se</string>
+    <string name="login">login</string>
+    <string name="prefitura_de_presidente_tancredo_neves">Prefitura de Presidente Tancredo Neves</string>
 </resources>

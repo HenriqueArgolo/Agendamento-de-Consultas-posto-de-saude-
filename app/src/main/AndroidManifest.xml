@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PostoTancredo"
         tools:targetApi="31">
         <activity
+            android:name=".view.atentication.Login"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
