@@ -20,4 +20,10 @@
     <string name="registrar_se">Registrar-se</string>
     <string name="login">login</string>
     <string name="prefitura_de_presidente_tancredo_neves">Prefitura de Presidente Tancredo Neves</string>
+    <string name="digite_o_numero_do_seu_cpf">Digite o numero do seu CPF</string>
+    <string name="digite_o_numero_do_cart_o_do_sus">Digite o numero do cartão do SUS</string>
+    <string name="registrar">Registrar</string>
+    <string name="digite_susa_senha_novamente">Digite susa senha novamente.</string>
+    <string name="digite_seu_nome_completo">Digite seu nome completo</string>
+    <string name="digite_sua_senha_novamente">Digite sua senha novamente.</string>
 </resources>

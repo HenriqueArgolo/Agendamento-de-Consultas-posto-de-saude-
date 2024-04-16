@@ -9,6 +9,7 @@ class Pacient {
     private var idade: String? = null
     private var cpf: String? = null
     private var noSus: String? = null
+    private var email: String? = null
     private var password: String? = null
 
     init {

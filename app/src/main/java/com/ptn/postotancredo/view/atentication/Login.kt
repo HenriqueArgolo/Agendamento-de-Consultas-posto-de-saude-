@@ -26,6 +26,9 @@ class Login : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             startActivity(Intent(this, Login::class.java))
         }
+        binding.register.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
+        }
     }
 
     private fun login(){
