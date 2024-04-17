@@ -2,10 +2,12 @@ package com.ptn.postotancredo.view.atentication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.ptn.postotancredo.R
 import com.ptn.postotancredo.databinding.ActivityLoginBinding
+import com.ptn.postotancredo.view.MainActivity
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -17,21 +19,18 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
 
-       navigationThroughtActivities()
 
     }
 
-
-    private fun navigationThroughtActivities(){
-        binding.backButton.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
-        }
-        binding.register.setOnClickListener {
-            startActivity(Intent(this, Register::class.java))
+    fun back(view: View) {
+        view.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
-    private fun login(){
-
+    fun register(view: View) {
+        view.setOnClickListener {
+            startActivity((Intent(this, Register::class.java)))
+        }
     }
 }

@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blue_gradiente"
     tools:context=".view.atentication.Register">
-
-
-    <LinearLayout
-        android:id="@+id/bottomSheet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:background="@drawable/blue_gradiente"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
@@ -51,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="25dp"
                 android:background="@drawable/rounded_board"
+                android:hint="Digite o numero do seu CPF."
                 android:padding="16dp"
-                android:text="Digite o numero do seu CPF."
                 android:textColor="#929191" />
 
             <EditText
@@ -61,8 +51,8 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/rounded_board"
+                android:hint="Digite seu nome completo."
                 android:padding="16dp"
-                android:text="Digite seu nome completo."
                 android:textColor="#929191" />
 
             <EditText
@@ -71,8 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="25dp"
                 android:background="@drawable/rounded_board"
+                android:hint="Digite o numero do cartão do SUS."
                 android:padding="16dp"
-                android:text="Digite o numero do cartão do SUS."
                 android:textColor="#929191" />
 
             <EditText
@@ -81,8 +71,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="25dp"
                 android:background="@drawable/rounded_board"
+                android:hint="@string/digite_seu_email"
                 android:padding="16dp"
-                android:text="@string/digite_seu_email"
                 android:textColor="#929191" />
 
             <EditText
@@ -92,8 +82,8 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/rounded_board"
+                android:hint="Digite sua senha."
                 android:padding="16dp"
-                android:text="Digite sua senha."
                 android:textColor="#929191" />
 
             <EditText
@@ -101,8 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="25dp"
                 android:background="@drawable/rounded_board"
+                android:hint="@string/digite_sua_senha_novamente"
                 android:padding="16dp"
-                android:text="@string/digite_sua_senha_novamente"
                 android:textColor="#929191" />
 
             <LinearLayout
@@ -111,7 +101,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="25dp"
-                android:orientation="horizontal"/>
+                android:orientation="horizontal" />
 
             <Button
                 android:id="@+id/login_button"
@@ -136,7 +126,4 @@
 
         </LinearLayout>
 
-
-    </LinearLayout>
-
-</FrameLayout>
+</ScrollView>

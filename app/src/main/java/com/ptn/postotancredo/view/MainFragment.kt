@@ -1,5 +1,6 @@
 package com.ptn.postotancredo.view
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,13 +10,16 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.ptn.postotancredo.R
+import com.ptn.postotancredo.dataBase.FirebaseHelper
 import com.ptn.postotancredo.databinding.ActivityMainBinding
 import com.ptn.postotancredo.databinding.FragmentMain2Binding
+import com.ptn.postotancredo.view.atentication.Login
 import com.ptn.postotancredo.viewModel.CalendarViewModel
 import com.ptn.postotancredo.viewModel.MainViewModel
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMain2Binding
+    private val firebaseHelper: FirebaseHelper = FirebaseHelper
     private val calendarViewModel = CalendarViewModel()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
 
@@ -57,8 +61,11 @@ class MainFragment : Fragment() {
 
     private fun configClicks() {
         binding.appointment.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            bottomSheetBehavior.peekHeight = 0
+            if (firebaseHelper.isAutenticado()){
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }else{
+                startActivity(Intent(requireContext(), Login::class.java))
+            }
         }
     }
 
