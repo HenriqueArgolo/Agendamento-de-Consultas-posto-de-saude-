@@ -4,13 +4,13 @@ import com.google.firebase.database.DatabaseReference
 import com.ptn.postotancredo.dataBase.FirebaseHelper
 
 class Pacient {
-    private var id: String? = null
-    private var nome: String? = null
-    private var idade: String? = null
-    private var cpf: String? = null
-    private var noSus: String? = null
-    private var email: String? = null
-    private var password: String? = null
+     var id: String? = null
+     var nome: String? = null
+     var idade: String? = null
+     var cpf: String? = null
+     var noSus: String? = null
+     var email: String? = null
+     var password: String? = null
 
     init {
         user()
