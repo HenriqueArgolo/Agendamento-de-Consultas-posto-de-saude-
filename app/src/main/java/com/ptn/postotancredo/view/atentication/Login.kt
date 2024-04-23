@@ -18,9 +18,10 @@ class Login : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_login)
+        binding.loginButton.setOnClickListener {
+            validaLogin()
+        }
 
-        validaLogin()
     }
 
     fun back(view: View) {

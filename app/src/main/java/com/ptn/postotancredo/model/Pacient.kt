@@ -6,7 +6,6 @@ import com.ptn.postotancredo.dataBase.FirebaseHelper
 class Pacient {
      var id: String? = null
      var nome: String? = null
-     var idade: String? = null
      var cpf: String? = null
      var noSus: String? = null
      var email: String? = null

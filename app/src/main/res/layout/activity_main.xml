@@ -108,6 +108,17 @@
                 android:layout_gravity="center"
                 android:layout_margin="25dp"
                 android:src="@drawable/logo_ptn"/>
+
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="bottom"
+                android:text="@string/sair"
+                android:textColor="#D8D3D3"
+                android:textSize="17sp"/>
         </LinearLayout>
 
     </FrameLayout>

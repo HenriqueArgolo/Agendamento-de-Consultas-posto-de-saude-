@@ -12,7 +12,9 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.transition.Fade
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.sidesheet.SideSheetBehavior
+import com.google.firebase.auth.FirebaseAuth
 import com.ptn.postotancredo.R
+import com.ptn.postotancredo.dataBase.FirebaseHelper
 import com.ptn.postotancredo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomBarNavigation(fragmentMain)
         onClickProfile()
+        rightSheetBarClick()
 
     }
 
@@ -85,6 +88,16 @@ class MainActivity : AppCompatActivity() {
         navigation.replace(R.id.container_main, fragment)
         navigation.commit()
 
+    }
+    private fun logOut(){
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
+        auth.signOut()
+        finish()
+    }
+    private fun rightSheetBarClick(){
+        binding.logout.setOnClickListener {
+            logOut()
+        }
     }
 }
 
