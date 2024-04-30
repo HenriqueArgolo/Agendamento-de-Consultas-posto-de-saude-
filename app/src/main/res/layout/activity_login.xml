@@ -10,7 +10,7 @@
     tools:context=".view.atentication.Login">
 
 
-    <ScrollView
+    <LinearLayout
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
 
 
             <ImageButton
-                android:onClick="back"
+                android:id="@+id/back_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -87,7 +87,6 @@
 
                 <TextView
                     android:id="@+id/register"
-                    android:onClick="register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -139,6 +138,6 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </LinearLayout>
 
 </ScrollView>

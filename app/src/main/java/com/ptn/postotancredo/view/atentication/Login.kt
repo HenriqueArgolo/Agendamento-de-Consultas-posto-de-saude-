@@ -21,20 +21,15 @@ class Login : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             validaLogin()
         }
-
-    }
-
-    fun back(view: View) {
-        view.setOnClickListener {
+        binding.backHome.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-    }
-
-    fun register(view: View) {
-        view.setOnClickListener {
+        binding.register.setOnClickListener {
             startActivity((Intent(this, Register::class.java)))
         }
     }
+
+
     private fun validaLogin(){
         val email:String = binding.emailLogin.text.toString()
         val password: String = binding.passwordLogin.text.toString()

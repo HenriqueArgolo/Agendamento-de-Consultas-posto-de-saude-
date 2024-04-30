@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,128 +7,131 @@
     android:layout_height="match_parent"
     android:background="@drawable/blue_gradiente"
     tools:context=".view.atentication.Register">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/back_button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:text="Registre-se "
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/cpf_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_board"
+            android:hint="Digite o numero do seu CPF."
+            android:padding="16dp"
+            android:textColor="#929191" />
+
+        <EditText
+            android:id="@+id/full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/rounded_board"
+            android:hint="Digite seu nome completo."
+            android:padding="16dp"
+            android:textColor="#929191" />
+
+        <EditText
+            android:id="@+id/sus_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_board"
+            android:hint="Digite o numero do cartão do SUS."
+            android:padding="16dp"
+            android:textColor="#929191" />
+
+        <EditText
+            android:id="@+id/email_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/rounded_board"
+            android:hint="@string/digite_seu_email"
+            android:padding="16dp"
+            android:textColor="#929191" />
+
+        <EditText
+            android:id="@+id/password_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:inputType="textPassword"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/rounded_board"
+            android:hint="Digite sua senha."
+            android:padding="16dp"
+            android:textColor="#929191" />
+
+        <EditText
+            android:id="@+id/repeat_password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_board"
+            android:hint="@string/digite_sua_senha_novamente"
+            android:padding="16dp"
+            android:textColor="#929191" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:orientation="horizontal" />
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="#292B34"
+            android:text="@string/registrar"
+            android:textSize="17sp" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="top"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/back_button"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_gravity="start"
-                android:layout_marginStart="16dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/back_button" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-
-                android:text="Registre-se "
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/cpf_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:background="@drawable/rounded_board"
-                android:hint="Digite o numero do seu CPF."
-                android:padding="16dp"
-                android:textColor="#929191" />
-
-            <EditText
-                android:id="@+id/full_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/rounded_board"
-                android:hint="Digite seu nome completo."
-                android:padding="16dp"
-                android:textColor="#929191" />
-
-            <EditText
-                android:id="@+id/sus_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:background="@drawable/rounded_board"
-                android:hint="Digite o numero do cartão do SUS."
-                android:padding="16dp"
-                android:textColor="#929191" />
-
-            <EditText
-                android:id="@+id/email_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/rounded_board"
-                android:hint="@string/digite_seu_email"
-                android:padding="16dp"
-                android:textColor="#929191" />
-
-            <EditText
-                android:id="@+id/password_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:inputType="textPassword"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/rounded_board"
-                android:hint="Digite sua senha."
-                android:padding="16dp"
-                android:textColor="#929191" />
-
-            <EditText
-                android:id="@+id/repeat_password"
-                android:inputType="textPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:background="@drawable/rounded_board"
-                android:hint="@string/digite_sua_senha_novamente"
-                android:padding="16dp"
-                android:textColor="#929191" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:orientation="horizontal" />
-
-            <Button
-                android:id="@+id/register_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:backgroundTint="#292B34"
-                android:text="@string/registrar"
-                android:textSize="17sp" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
 
         </LinearLayout>
 
+    </LinearLayout>
 </ScrollView>
+
+</LinearLayout>

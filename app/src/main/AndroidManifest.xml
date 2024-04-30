@@ -15,11 +15,11 @@
         <activity
             android:name=".view.atentication.Register"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".view.atentication.Login"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".view.MainActivity"
             android:exported="true">
