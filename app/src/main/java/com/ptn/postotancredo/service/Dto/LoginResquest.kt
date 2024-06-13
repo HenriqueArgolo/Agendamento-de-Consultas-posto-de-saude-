@@ -1,4 +1,4 @@
-package com.ptn.postotancredo.service.loginRequest
+package com.ptn.postotancredo.service.Dto
 
 data class LoginResquest(
     val username: String,

@@ -1,5 +1,6 @@
 package com.ptn.postotancredo.view
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.transition.Transition
 import android.transition.TransitionInflater
@@ -16,8 +17,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.ptn.postotancredo.R
 import com.ptn.postotancredo.dataBase.FirebaseHelper
 import com.ptn.postotancredo.databinding.ActivityMainBinding
+import com.ptn.postotancredo.service.auth.GlobalTokenValue
 
 class MainActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
     private lateinit var binding: ActivityMainBinding
     private lateinit var sideSheetBehavior: SideSheetBehavior<FrameLayout>
     private val fragmentMain = MainFragment()
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        initSharedPreference()
         sideSheetBehavior = SideSheetBehavior.from(binding.sideSheet)
         sideSheetBehavior.state = SideSheetBehavior.STATE_HIDDEN
 
@@ -98,6 +101,11 @@ class MainActivity : AppCompatActivity() {
         binding.logout.setOnClickListener {
             logOut()
         }
+    }
+
+    private fun initSharedPreference(){
+        sharedPreferences =getSharedPreferences("token_jwt", MODE_PRIVATE)
+        GlobalTokenValue.tokenValue = sharedPreferences.getString("token_jwt", null).toString()
     }
 }
 

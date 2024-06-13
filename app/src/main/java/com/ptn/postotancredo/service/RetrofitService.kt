@@ -3,10 +3,9 @@ package com.ptn.postotancredo.service
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.http.POST
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Retrofit {
+class RetrofitService {
 
     val logginIntercetor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -17,10 +16,12 @@ class Retrofit {
         .build()
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://localhost:8080/")
+        .baseUrl("http://192.168.1.8:8080")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
 
     val apiService = retrofit.create(ApiService::class.java)
+
+
 }
