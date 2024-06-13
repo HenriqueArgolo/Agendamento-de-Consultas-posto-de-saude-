@@ -29,4 +29,9 @@ class ScheduledFragment : Fragment() {
     ): View {
         return inflater.inflate(R.layout.fragment_scheduled, container, false)
     }
+
+
+
+
+
 }

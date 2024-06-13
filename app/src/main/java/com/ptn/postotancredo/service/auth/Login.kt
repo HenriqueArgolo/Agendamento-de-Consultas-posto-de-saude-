@@ -7,22 +7,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.content.SharedPreferences
 import android.util.Log
+import com.google.gson.Gson
+import com.ptn.postotancredo.service.Dto.UserDataResponse
 
 
 class Login(private val sharedPreferences: SharedPreferences) {
 
-
+    private val gson = Gson()
     fun signIn(username: String, password: String) {
         val loginRequest = LoginResquest(username, password)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = RetrofitService().apiService.login(loginRequest)
-                if (response.isSuccessful && !response.body()?.accessToken.isNullOrBlank()) {
-                    response.body()?.accessToken.let {
-                        if (it != null) {
-                            saveToken(it)
-                        }
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        saveUserData(it)
+                        Log.d("login acd", "dados recebidos pelo loginnnnnnnnnnnnnnnnnnnnnnnnnn $it")
                     }
                 }
             } catch (e: Exception) {
@@ -31,7 +32,11 @@ class Login(private val sharedPreferences: SharedPreferences) {
             }
         }
     }
-    private fun saveToken(token: String) {
-        sharedPreferences.edit().putString("token_jwt", token).apply()
+    private fun saveUserData(userData: UserDataResponse) {
+        val userLoginResponse = gson.toJson(userData)
+        sharedPreferences.edit().putString("userData", userLoginResponse).apply()
+        val user = sharedPreferences.getString("userData", null).let { gson.fromJson(it, UserDataResponse::class.java) }
+        Log.d("login acd", "dados recebidos pelo login $user")
+        GlobalTokenValue.initUserData(user)
     }
 }

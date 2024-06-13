@@ -328,8 +328,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:calendarTextColor="@color/white"
                 android:background="@drawable/rounded_board"
+                android:calendarTextColor="@color/white"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner" />
 

@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPreferences = getSharedPreferences("token_prefs", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE)
 
         binding.loginButton.setOnClickListener {
             signIn()
@@ -37,9 +37,9 @@ class LoginActivity : AppCompatActivity() {
         val login = Login(sharedPreferences)
         CoroutineScope(Dispatchers.Main).launch{
             login.signIn(email, password)
-            if (GlobalTokenValue.tokenValue.isNotBlank()){
+            if (GlobalTokenValue.userDataResponse != null){
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                Log.d("loginActivity" ,"esse é o tokeeeeeeee: ${GlobalTokenValue.tokenValue}")
+                Log.d("loginActivity" ,"esse é o tokeeeeeeee: ${GlobalTokenValue.userDataResponse}")
             }else
                 Toast.makeText(this@LoginActivity, "Falha no login", Toast.LENGTH_LONG).show()
             }

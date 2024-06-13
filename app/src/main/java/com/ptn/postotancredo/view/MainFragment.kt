@@ -4,27 +4,27 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.ptn.postotancredo.dataBase.FirebaseHelper
 import com.ptn.postotancredo.databinding.FragmentMain2Binding
-import com.ptn.postotancredo.model.Pacient
+import com.ptn.postotancredo.model.Appointment
+import com.ptn.postotancredo.model.Procedures
+import com.ptn.postotancredo.model.User
 import com.ptn.postotancredo.service.auth.GlobalTokenValue
 import com.ptn.postotancredo.viewModel.CalendarViewModel
 import com.ptn.postotancredo.viewModel.MainViewModel
-import com.ptn.postotancredo.viewModel.UserDataInfo
 
 class MainFragment : Fragment() {
+    lateinit var procedure: Procedures
     private lateinit var binding: FragmentMain2Binding
-    lateinit var sharedPreferences: SharedPreferences
     private val calendarViewModel = CalendarViewModel()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
-    private var user: Pacient = Pacient()
+
 
     companion object {
         fun newInstance() = MainFragment()
@@ -35,63 +35,69 @@ class MainFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentMain2Binding.inflate(layoutInflater)
-
-
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return binding.root
-
-
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.userName.text = GlobalTokenValue.userDataResponse?.accessToken
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetBehavior.peekHeight = 0
 
-
-
+        setUserInfo()
         configClicks()
         checkBottomSheet()
         closeSchueldingScreen()
         calendarViewModel.formatedDate(binding.daySelected, binding.calendar)
+
         binding.closeButton.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
 
     }
-
     private fun configClicks() {
         binding.appointment.setOnClickListener {
-            if (GlobalTokenValue.tokenValue.isNotBlank()){
+            if (GlobalTokenValue.userDataResponse != null){
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                procedure.name = "consulta"
+                Log.d("main fragment", "aaaaaaaaaaaaaaaaaaa: ${GlobalTokenValue.userDataResponse?.user?.firstName}")
             }else{
                 startActivity(Intent(requireContext(), LoginActivity::class.java))
             }
         }
     }
-
     private fun checkBottomSheet() {
         if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
             bottomSheetBehavior.peekHeight = 0
 
         }
     }
-
     private fun closeSchueldingScreen() {
         binding.closeButton.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            calendarViewModel.formatedDate(binding.daySelected, binding.calendar)
+
         }
+    }
+    private fun setUserInfo(){
+        val pacient:User? = GlobalTokenValue.userDataResponse?.user
+        val fullName = String.format("${pacient?.firstName} ${pacient?.lastName} ")
+        binding.userName.text = fullName
+        binding.userSusNumber.text = String.format("Sus: ${pacient?.sus}")
     }
 
 
+    private fun registerAppointment(){
+        val token = GlobalTokenValue.userDataResponse?.accessToken
+        var appointment: Appointment
+        
+    }
 
 }
 

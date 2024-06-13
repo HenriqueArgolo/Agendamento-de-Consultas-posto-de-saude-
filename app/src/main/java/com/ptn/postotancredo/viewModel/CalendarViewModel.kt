@@ -35,7 +35,7 @@ class CalendarViewModel : ViewModel() {
                     else -> "Dia inválido"
                 }
 
-                textView.text = String.format("$nomeDoDia $dayOfMonth/$monthOfYear/$year")
+                textView.text = String.format("$dayOfMonth-$monthOfYear-$year")
             }
         }
 

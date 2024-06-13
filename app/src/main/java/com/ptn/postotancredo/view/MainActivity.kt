@@ -2,27 +2,25 @@ package com.ptn.postotancredo.view
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.transition.Transition
-import android.transition.TransitionInflater
+import android.util.Log
 import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.transition.Fade
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.sidesheet.SideSheetBehavior
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
 import com.ptn.postotancredo.R
-import com.ptn.postotancredo.dataBase.FirebaseHelper
 import com.ptn.postotancredo.databinding.ActivityMainBinding
+import com.ptn.postotancredo.service.Dto.UserDataResponse
 import com.ptn.postotancredo.service.auth.GlobalTokenValue
 
 class MainActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     private lateinit var binding: ActivityMainBinding
     private lateinit var sideSheetBehavior: SideSheetBehavior<FrameLayout>
+
+
     private val fragmentMain = MainFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initSharedPreference()
+
         sideSheetBehavior = SideSheetBehavior.from(binding.sideSheet)
         sideSheetBehavior.state = SideSheetBehavior.STATE_HIDDEN
 
@@ -104,8 +103,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initSharedPreference(){
-        sharedPreferences =getSharedPreferences("token_jwt", MODE_PRIVATE)
-        GlobalTokenValue.tokenValue = sharedPreferences.getString("token_jwt", null).toString()
+        val gson = Gson()
+        sharedPreferences =getSharedPreferences("userData", MODE_PRIVATE)
+        val userInfo = sharedPreferences.getString("userData", null)
+        if (userInfo != null){
+            val userData = userInfo.let { gson.fromJson(it, UserDataResponse::class.java)}
+            Log.d("main", "aaaaaaaaaaaaaaaaaaabbbbbcccccccccccc: $userData")
+            GlobalTokenValue.initUserData(userData)
+            Log.d("main", "aaaaaaaaaaaaaaaaaaabbbbb: ${GlobalTokenValue.userDataResponse?.user}")
+        }else Log.d("MainActivity", "O user data está vazio")
+
+
     }
 }
 

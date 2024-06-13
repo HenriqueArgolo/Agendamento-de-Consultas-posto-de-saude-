@@ -38,6 +38,7 @@
 
 
             <LinearLayout
+                android:id="@+id/appointment_container"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginStart="16dp"
@@ -65,6 +66,7 @@
 
 
                         <ImageView
+                            android:id="@+id/appointment_user_picture"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
@@ -77,6 +79,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/appointment_username"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -86,20 +89,20 @@
                             android:textSize="25sp" />
 
                         <TextView
+                            android:id="@+id/appointment_cpf"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="5dp"
-                            android:text="RG: 34563472323"
                             android:textColor="@color/white"
                             android:textSize="17sp" />
 
                         <TextView
+                            android:id="@+id/appointment_sus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="5dp"
-                            android:text="SUS: 34563472323"
                             android:textColor="@color/white"
                             android:textSize="17sp" />
                     </LinearLayout>
@@ -114,6 +117,7 @@
 
 
                     <TextView
+                        android:id="@+id/appointment_procedure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -124,6 +128,7 @@
 
 
                     <TextView
+                        android:id="@+id/appointment_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
@@ -150,6 +155,7 @@
                         android:text="Posição na fila"/>
 
                     <TextView
+                        android:id="@+id/appointment_position"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -172,6 +178,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/cancel_appointment_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#DA4747"
@@ -179,6 +186,7 @@
                 android:text="Cancelar agendamento"/>
 
             <TextView
+                android:id="@+id/appointment_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
