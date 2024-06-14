@@ -65,6 +65,7 @@
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/rounded_board"
                 android:padding="16dp"
+                android:inputType="textPassword"
                 android:hint="Digite sua senha."
                 android:textColor="#929191" />
 

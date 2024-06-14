@@ -23,7 +23,6 @@ class Login(private val sharedPreferences: SharedPreferences) {
                 if (response.isSuccessful) {
                     response.body()?.let {
                         saveUserData(it)
-                        Log.d("login acd", "dados recebidos pelo loginnnnnnnnnnnnnnnnnnnnnnnnnn $it")
                     }
                 }
             } catch (e: Exception) {
@@ -36,7 +35,6 @@ class Login(private val sharedPreferences: SharedPreferences) {
         val userLoginResponse = gson.toJson(userData)
         sharedPreferences.edit().putString("userData", userLoginResponse).apply()
         val user = sharedPreferences.getString("userData", null).let { gson.fromJson(it, UserDataResponse::class.java) }
-        Log.d("login acd", "dados recebidos pelo login $user")
         GlobalTokenValue.initUserData(user)
     }
 }

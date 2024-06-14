@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 Log.d("loginActivity" ,"esse é o tokeeeeeeee: ${GlobalTokenValue.userDataResponse}")
             }else
-                Toast.makeText(this@LoginActivity, "Falha no login", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "", Toast.LENGTH_LONG).show()
             }
         }
 }

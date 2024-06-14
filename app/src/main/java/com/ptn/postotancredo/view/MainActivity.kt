@@ -1,5 +1,6 @@
 package com.ptn.postotancredo.view
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE)
         initSharedPreference()
 
         sideSheetBehavior = SideSheetBehavior.from(binding.sideSheet)
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         bottomBarNavigation(fragmentMain)
         onClickProfile()
         rightSheetBarClick()
+
+
 
     }
 
@@ -80,40 +85,39 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkMenu() {
         if (sideSheetBehavior.state == SideSheetBehavior.STATE_EXPANDED) {
-           sideSheetBehavior.state = SideSheetBehavior.STATE_HIDDEN
+            sideSheetBehavior.state = SideSheetBehavior.STATE_HIDDEN
         }
     }
 
-    private fun bottomBarNavigation(fragment: Fragment){
+    private fun bottomBarNavigation(fragment: Fragment) {
         val navigation = supportFragmentManager.beginTransaction()
         navigation.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         navigation.replace(R.id.container_main, fragment)
         navigation.commit()
+    }
 
-    }
-    private fun logOut(){
-        val auth: FirebaseAuth = FirebaseAuth.getInstance()
-        auth.signOut()
-        finish()
-    }
-    private fun rightSheetBarClick(){
+
+    private fun rightSheetBarClick() {
         binding.logout.setOnClickListener {
-            logOut()
+
         }
     }
 
-    private fun initSharedPreference(){
+    private fun initSharedPreference() {
         val gson = Gson()
-        sharedPreferences =getSharedPreferences("userData", MODE_PRIVATE)
         val userInfo = sharedPreferences.getString("userData", null)
-        if (userInfo != null){
-            val userData = userInfo.let { gson.fromJson(it, UserDataResponse::class.java)}
-            Log.d("main", "aaaaaaaaaaaaaaaaaaabbbbbcccccccccccc: $userData")
+        if (userInfo != null) {
+            val userData = userInfo.let { gson.fromJson(it, UserDataResponse::class.java) }
             GlobalTokenValue.initUserData(userData)
-            Log.d("main", "aaaaaaaaaaaaaaaaaaabbbbb: ${GlobalTokenValue.userDataResponse?.user}")
-        }else Log.d("MainActivity", "O user data está vazio")
+        } else Log.d("MainActivity", "O user data está vazio")
 
 
+    }
+
+    private fun isAthenticated(){
+        if(GlobalTokenValue.userDataResponse == null){
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 }
 
