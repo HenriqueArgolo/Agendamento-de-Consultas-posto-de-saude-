@@ -1,7 +1,6 @@
 package com.ptn.postotancredo.view
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +21,7 @@ import com.ptn.postotancredo.viewModel.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
+import kotlinx.coroutines.withContext
 
 class MainFragment : Fragment() {
     lateinit var procedure: Procedures
@@ -70,7 +69,7 @@ class MainFragment : Fragment() {
         }
 
         binding.scheduel.setOnClickListener {
-            registerAppointment()
+            saveAppointment()
         }
 
     }
@@ -113,42 +112,66 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun registerAppointment() {
-        val token = GlobalTokenValue.userDataResponse?.accessToken
-        val healthyCenter = "corte de pedra"
-        val status = "Agendado"
-        val dateSelected = binding.daySelected.text.toString()
-        procedure = Procedures(type)
-        val appointment = Appointment(procedure, healthyCenter, dateSelected, status)
+    private fun saveAppointment() {
+        val token = GlobalTokenValue.userDataResponse?.accessToken ?: run {
+            Log.e("MainFragment", "Token is null. Cannot proceed with appointment registration.")
+            return
+        }
+        val user = if(GlobalTokenValue.userDataResponse?.user != null )
+            GlobalTokenValue.userDataResponse?.user else null
 
-        CoroutineScope(Dispatchers.IO).launch {
-            if (token != null) {
-                try {
-                    val respose = RetrofitService().apiService.creatAppointment("Bearer $token", appointment)
-                    if(respose.isSuccessful){
-                        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                    }
+        val appointment = getAppointment()
 
-                }catch (e: Exception){
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                    Log.e("Main fragment", "não foi posivel exeecutarrrrrrrrrrr", e)
+            CoroutineScope(Dispatchers.IO).launch {
+                if(!isAppointmentScheduled(token, user!!)){
+                 createAppointmentRequest(token, appointment)
                 }
 
+
+            }
+    }
+
+    private suspend fun isAppointmentScheduled(token: String, user: User): Boolean {
+        return try {
+            RetrofitService().apiService.isScheduled("Bearer $token", user)
+        } catch (e: Exception) {
+            Log.e("MainFragment", "Error checking if appointment is scheduled", e)
+            false
+        }
+    }
+
+    private suspend fun createAppointmentRequest(token: String, appointment: Appointment) {
+        val response = RetrofitService().apiService.creatAppointment("Bearer $token", appointment)
+        withContext(Dispatchers.Main) {
+            if (response.isSuccessful) {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            } else {
+                Log.e("MainFragment", "Error creating appointment: ${response.code()}")
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
         }
     }
 
-    private fun fragmentData(){
+    private fun getAppointment(): Appointment {
+        val healthyCenter = "corte de pedra"
+        val status = "Agendado"
+        val dateSelected = binding.daySelected.text.toString()
+        procedure = Procedures(type)
+        return Appointment(procedure, healthyCenter, dateSelected, status)
+    }
+
+    private fun fragmentData() {
         val message = "Faça login."
-        if(GlobalTokenValue.userDataResponse == null){
+        if (GlobalTokenValue.userDataResponse == null) {
             binding.userName.text = String.format(" $message")
             binding.userSusNumber.visibility = View.GONE
         }
     }
 
-    private fun cancelAppointment(){
+    private fun cancelAppointment() {
 
     }
+
 }
 
 

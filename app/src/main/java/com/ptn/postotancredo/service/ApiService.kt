@@ -1,6 +1,7 @@
 package com.ptn.postotancredo.service
 
 import com.ptn.postotancredo.model.Appointment
+import com.ptn.postotancredo.model.User
 import com.ptn.postotancredo.service.Dto.AppointmentResponse
 import com.ptn.postotancredo.service.Dto.LoginResquest
 import com.ptn.postotancredo.service.Dto.UserDataResponse
@@ -21,5 +22,8 @@ interface ApiService {
         ): Response<Appointment>
 
     @GET("/api/userappointment")
-    suspend fun getUserAppointment(@Header("Authorization") token: String):Response<AppointmentResponse>
+    suspend fun getUserAppointment(@Header("Authorization") token: String?):Response<AppointmentResponse>
+
+    @POST("/api/checkifscheduled")
+    suspend fun isScheduled(@Header("Authorization") token: String, @Body user: User):Boolean
 }

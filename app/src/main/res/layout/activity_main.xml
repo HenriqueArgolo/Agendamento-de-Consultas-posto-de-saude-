@@ -58,11 +58,11 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:id="@+id/side_sheet_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
-                    android:text="Raul Carlos"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:ignore="HardcodedText" />

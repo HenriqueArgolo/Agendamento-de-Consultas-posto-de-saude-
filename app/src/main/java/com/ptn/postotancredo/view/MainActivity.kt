@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.sideSheetUsername.text = GlobalTokenValue.userDataResponse?.user?.firstName
+
         sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE)
         initSharedPreference()
 
