@@ -57,7 +57,6 @@ class MainFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetBehavior.peekHeight = 0
 
-        fragmentData()
         setUserInfo()
         configClicks()
         checkBottomSheet()
@@ -117,18 +116,14 @@ class MainFragment : Fragment() {
             Log.e("MainFragment", "Token is null. Cannot proceed with appointment registration.")
             return
         }
-        val user = if(GlobalTokenValue.userDataResponse?.user != null )
+        val user = if (GlobalTokenValue.userDataResponse?.user != null)
             GlobalTokenValue.userDataResponse?.user else null
 
         val appointment = getAppointment()
 
-            CoroutineScope(Dispatchers.IO).launch {
-                if(!isAppointmentScheduled(token, user!!)){
-                 createAppointmentRequest(token, appointment)
-                }
-
-
-            }
+        CoroutineScope(Dispatchers.IO).launch {
+            createAppointmentRequest(token, appointment)
+        }
     }
 
     private suspend fun isAppointmentScheduled(token: String, user: User): Boolean {
@@ -158,14 +153,6 @@ class MainFragment : Fragment() {
         val dateSelected = binding.daySelected.text.toString()
         procedure = Procedures(type)
         return Appointment(procedure, healthyCenter, dateSelected, status)
-    }
-
-    private fun fragmentData() {
-        val message = "Faça login."
-        if (GlobalTokenValue.userDataResponse == null) {
-            binding.userName.text = String.format(" $message")
-            binding.userSusNumber.visibility = View.GONE
-        }
     }
 
     private fun cancelAppointment() {

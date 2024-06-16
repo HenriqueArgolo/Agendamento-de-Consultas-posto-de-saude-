@@ -19,7 +19,7 @@ interface ApiService {
     suspend fun creatAppointment(
             @Header("Authorization") token: String,
             @Body appointment: Appointment
-        ): Response<Appointment>
+        ): Response<Void>
 
     @GET("/api/userappointment")
     suspend fun getUserAppointment(@Header("Authorization") token: String?):Response<AppointmentResponse>
