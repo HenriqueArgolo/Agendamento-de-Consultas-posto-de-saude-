@@ -47,14 +47,11 @@ class ScheduledFragment : Fragment() {
                 val appointmentData = scheduledViewModel.getAppointment()
                 withContext(Dispatchers.Main) {
                     if (appointmentData != null && appointmentData.status != "finalizado") {
-                        val fullName = "${appointmentData.user.firstName} ${appointmentData.user.lastName}"
-                        val cpf = appointmentData.user.cpf
-                        val sus = appointmentData.user.sus
-                        binding.appointmentUsername.text = fullName
-                        binding.appointmentCpf.text = "CPF: $cpf"
-                        binding.appointmentSus.text = "SUS: $sus"
-                        binding.appointmentProcedure.text = "Tipo: ${appointmentData.procedures.name}"
-                        binding.appointmentDate.text = "Data: ${appointmentData.appointmentDate}"
+                        binding.appointmentUsername.text = String.format("${appointmentData.user.firstName} ${appointmentData.user.lastName}")
+                        binding.appointmentCpf.text = String.format("CPF: ${appointmentData.user.cpf}")
+                        binding.appointmentSus.text = String.format("SUS: ${appointmentData.user.sus}")
+                        binding.appointmentProcedure.text = String.format("Tipo: ${appointmentData.procedures.name}")
+                        binding.appointmentDate.text = String.format("Data: ${appointmentData.appointmentDate}")
                         visibile()
                     } else {
                         gone()

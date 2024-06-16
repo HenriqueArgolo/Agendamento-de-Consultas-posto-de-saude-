@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.ptn.postotancredo.databinding.FragmentMain2Binding
 import com.ptn.postotancredo.model.Appointment
@@ -20,6 +21,7 @@ import com.ptn.postotancredo.viewModel.CalendarViewModel
 import com.ptn.postotancredo.viewModel.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -117,21 +119,19 @@ class MainFragment : Fragment() {
             return
         }
         val user = if (GlobalTokenValue.userDataResponse?.user != null)
-            GlobalTokenValue.userDataResponse?.user else null
+            GlobalTokenValue.userDataResponse?.user else return
 
         val appointment = getAppointment()
 
         CoroutineScope(Dispatchers.IO).launch {
-            createAppointmentRequest(token, appointment)
-        }
-    }
-
-    private suspend fun isAppointmentScheduled(token: String, user: User): Boolean {
-        return try {
-            RetrofitService().apiService.isScheduled("Bearer $token", user)
-        } catch (e: Exception) {
-            Log.e("MainFragment", "Error checking if appointment is scheduled", e)
-            false
+            val response = RetrofitService().apiService.isScheduled("Bearer $token", user!!)
+            if(!response){
+                createAppointmentRequest(token, appointment)
+            }else {
+                GlobalScope.launch(Dispatchers.Main){
+                    Toast.makeText(requireContext(), "Você já possui um agendamento.", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 
