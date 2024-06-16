@@ -52,6 +52,7 @@ class ScheduledFragment : Fragment() {
                         binding.appointmentSus.text = String.format("SUS: ${appointmentData.user.sus}")
                         binding.appointmentProcedure.text = String.format("Tipo: ${appointmentData.procedures.name}")
                         binding.appointmentDate.text = String.format("Data: ${appointmentData.appointmentDate}")
+                        binding.appointmentPosition.text= appointmentData.position.toString()
                         visibile()
                     } else {
                         gone()

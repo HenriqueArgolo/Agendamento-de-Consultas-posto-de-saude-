@@ -6,5 +6,5 @@ data class Appointment(
     var procedures: Procedures,
     var healthCenter: String,
     var appointmentDate: String,
-    var status: String
+    var status: String,
 )
