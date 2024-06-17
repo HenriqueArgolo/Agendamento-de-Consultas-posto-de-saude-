@@ -33,9 +33,11 @@
 
 
         <LinearLayout
+            android:id="@+id/history"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:visibility="gone"
             android:gravity="center"
             android:orientation="vertical">
             <ImageView
@@ -53,7 +55,11 @@
         </LinearLayout>
 
 
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            tools:itemCount="3"
+            tools:listitem="@layout/history_object"
+            android:layout_height="match_parent"/>
 
 
     </LinearLayout>

@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#DA4747"
                 android:layout_margin="16dp"
-                android:text="Cancelar agendamento"/>
+                android:text="Cancelar"/>
 
             <TextView
                 android:id="@+id/appointment_message"

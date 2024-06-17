@@ -26,4 +26,15 @@ class ScheduledViewModel : ViewModel() {
             }
         }
     }
-}
+
+    suspend fun deleteAppointment(){
+        val token = GlobalTokenValue.userDataResponse?.accessToken
+            try {
+                RetrofitService().apiService.deleteAppointment("Bearer $token")
+            }catch (e: Exception){
+                Log.e("HistoryViewModel", "impossible to delete appointmente", e)
+            }
+
+        }
+    }
+

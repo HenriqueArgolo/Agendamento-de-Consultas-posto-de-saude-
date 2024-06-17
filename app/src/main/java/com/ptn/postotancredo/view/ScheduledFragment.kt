@@ -39,6 +39,7 @@ class ScheduledFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindAppointment()
+        delete()
     }
 
     private fun bindAppointment() {
@@ -65,7 +66,14 @@ class ScheduledFragment : Fragment() {
             }
         }
     }
+    private fun delete(){
+        binding.cancelAppointmentBtn.setOnClickListener{
+            CoroutineScope(Dispatchers.Main).launch {
+                scheduledViewModel.deleteAppointment()
+            }
+     }
 
+    }
     private fun visibile() {
         binding.appointmentContainer.visibility = View.VISIBLE
         binding.cancelAppointmentBtn.visibility = View.VISIBLE

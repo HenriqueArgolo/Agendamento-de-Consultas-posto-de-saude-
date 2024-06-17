@@ -152,7 +152,7 @@ class MainFragment : Fragment() {
         val status = "Agendado"
         val dateSelected = binding.daySelected.text.toString()
         procedure = Procedures(type)
-        return Appointment(procedure, healthyCenter, dateSelected, status)
+        return Appointment(procedure, healthyCenter, dateSelected, status, position = null)
     }
 
     private fun cancelAppointment() {

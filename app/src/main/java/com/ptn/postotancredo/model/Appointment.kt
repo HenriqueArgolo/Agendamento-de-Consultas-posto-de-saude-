@@ -7,4 +7,5 @@ data class Appointment(
     var healthCenter: String,
     var appointmentDate: String,
     var status: String,
+    var position: Int?
 )
