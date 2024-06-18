@@ -9,7 +9,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.sidesheet.SideSheetBehavior
-import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.ptn.postotancredo.R
 import com.ptn.postotancredo.databinding.ActivityMainBinding
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.history -> {
-                    val history = HistoryFragment()
+                    val history = HistoricFragment()
                     bottomBarNavigation(history)
                     checkMenu()
                 }

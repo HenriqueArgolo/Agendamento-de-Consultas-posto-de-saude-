@@ -2,7 +2,7 @@ package com.ptn.postotancredo.model
 
 import java.time.Instant
 
-data class History(
+data class Historic(
     val id: Long,
     val user: User,
     val procedures: Procedures,

@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ptn.postotancredo.databinding.HistoryObjectBinding
-import com.ptn.postotancredo.model.History
+import com.ptn.postotancredo.model.Historic
 
-class HistoryAdapter(
+class HistoricAdapter(
     private val context: Context,
-    private val historyList: List<History>
-) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
+    private val historyList: List<Historic>
+) : RecyclerView.Adapter<HistoricAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: HistoryObjectBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(history: History){
+        fun bind(history: Historic){
             val user = history.user
             binding.historyUsername.text = String.format("${user.firstName} ${user.lastName}")
             binding.historyCpf.text = String.format("CPF: ${user.cpf}")

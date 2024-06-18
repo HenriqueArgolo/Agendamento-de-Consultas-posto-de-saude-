@@ -1,6 +1,7 @@
 package com.ptn.postotancredo.service
 
 import com.ptn.postotancredo.model.Appointment
+import com.ptn.postotancredo.model.Historic
 import com.ptn.postotancredo.model.User
 import com.ptn.postotancredo.service.Dto.AppointmentResponse
 import com.ptn.postotancredo.service.Dto.LoginResquest
@@ -37,4 +38,11 @@ interface ApiService {
 
     @DELETE("/api/deleteAppointment")
     suspend fun deleteAppointment(@Header("Authorization") token: String):Response<Void>
+
+    //history controller
+
+    @GET("/historic/all")
+    suspend fun getHistoric(@Header("Authorization") token: String):Response<List<Historic>>
+
+
 }
