@@ -54,6 +54,7 @@ class ScheduledFragment : Fragment() {
                         binding.appointmentProcedure.text = String.format("Tipo: ${appointmentData.procedures.name}")
                         binding.appointmentDate.text = String.format("Data: ${appointmentData.appointmentDate}")
                         binding.appointmentPosition.text= appointmentData.position.toString()
+                        binding.healthCenter.text = String.format("Centro de sáude: ${appointmentData.healthCenter}")
                         visibile()
                     } else {
                         gone()
@@ -70,6 +71,7 @@ class ScheduledFragment : Fragment() {
         binding.cancelAppointmentBtn.setOnClickListener{
             CoroutineScope(Dispatchers.Main).launch {
                 scheduledViewModel.deleteAppointment()
+                gone()
             }
      }
 

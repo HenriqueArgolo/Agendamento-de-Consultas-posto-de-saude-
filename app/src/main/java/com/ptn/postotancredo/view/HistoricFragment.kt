@@ -19,10 +19,11 @@ import com.ptn.postotancredo.viewModel.HistoryViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HistoricFragment : Fragment() {
     lateinit var binding: FragmentHistoryBinding
-    var historicList: List<Historic>? = null
+    private var historicList: List<Historic> = emptyList()
     lateinit var historicAdapter: HistoricAdapter
 
     companion object {
@@ -46,16 +47,22 @@ class HistoricFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getHistoric()
-        configRv()
+        fetchAndDisplayHistoric()
+    }
+
+    private fun fetchAndDisplayHistoric() {
+        CoroutineScope(Dispatchers.Main).launch {
+            historicList = getHistoric()
+            configRv()
+        }
     }
 
     private fun configRv() {
-       historicList?.isNotEmpty() ?:run {
-           binding.rv.visibility = View.GONE
-           Log.d("HiscoricFragment", "the historic list is empity")
-       }
-        historicAdapter = HistoricAdapter(requireContext(), historicList!!)
+        if (historicList.isEmpty()) {
+            binding.rv.visibility = View.GONE
+            Log.d("HiscoricFragment", "the historic list is empity")
+        }
+        historicAdapter = HistoricAdapter(requireContext(), historicList)
         binding.rv.apply {
             adapter = historicAdapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -63,20 +70,18 @@ class HistoricFragment : Fragment() {
 
     }
 
-    private fun getHistoric() {
+    private suspend fun getHistoric(): List<Historic> {
         val token = GlobalTokenValue.userDataResponse?.accessToken ?: run {
             Log.d("Histic Fragment", "Token not found")
-            return
+            return emptyList()
         }
-        CoroutineScope(Dispatchers.Main).launch {
+        return withContext(Dispatchers.Main) {
             val response = RetrofitService().apiService.getHistoric("Bearer $token")
             if (response.isSuccessful) {
-                response.body().let {
-                    historicList = it
-                }
-            }
+                response.body() ?: emptyList()
+            } else emptyList()
         }
     }
-
-
 }
+
+

@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ScheduledViewModel : ViewModel() {
-    suspend fun getAppointment(): AppointmentResponse?{
+    suspend fun getAppointment(): AppointmentResponse? {
         val token = GlobalTokenValue.userDataResponse?.accessToken
 
         return withContext(Dispatchers.IO) {
@@ -27,14 +27,14 @@ class ScheduledViewModel : ViewModel() {
         }
     }
 
-    suspend fun deleteAppointment(){
+    suspend fun deleteAppointment() {
         val token = GlobalTokenValue.userDataResponse?.accessToken
-            try {
-                RetrofitService().apiService.deleteAppointment("Bearer $token")
-            }catch (e: Exception){
-                Log.e("HistoryViewModel", "impossible to delete appointmente", e)
-            }
-
+        try {
+            RetrofitService().apiService.deleteAppointment("Bearer $token")
+        } catch (e: Exception) {
+            Log.e("HistoryViewModel", "impossible to delete appointmente", e)
         }
+
     }
+}
 

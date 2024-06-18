@@ -27,4 +27,10 @@
     <string name="digite_seu_nome_completo">Digite seu nome completo</string>
     <string name="digite_sua_senha_novamente">Digite sua senha novamente.</string>
     <string name="sair">Sair</string>
+    <string name="observa_es">Observações:</string>
+    <string name="saiba_mais">Saiba Mais</string>
+    <string name="data_do_atendimento">Data do atendimento:</string>
+    <string name="nenhuma_observa_o">Nenhuma observação</string>
+    <string name="hor_rio_do_atendimento">Horário do atendimento:</string>
+    <string name="unidade_de_sa_de">Unidade de saúde</string>
 </resources>

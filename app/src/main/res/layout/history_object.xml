@@ -1,120 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="15dp"
-    android:layout_marginEnd="16dp"
-    android:background="@drawable/blue_gradiente"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/cardinfo_shape_rounded"
-        android:orientation="horizontal">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="16dp">
-
-
-            <ImageView
-                android:id="@+id/history_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/vaccine" />
-        </androidx.cardview.widget.CardView>
+        android:background="@drawable/blue_gradiente"
+        android:orientation="vertical">
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/cardinfo_shape_rounded"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/history_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/vaccine" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/history_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="raul Carlos"
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/history_cpf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="5dp"
+                    android:text="RG: 34563472323"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/history_sus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="5dp"
+                    android:text="SUS: 34563472323"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/hisotry_procedure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:text="Tipo: Vacina"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/history_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_gravity="center"
+                android:text="Data: 13/04/2024"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_show_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10sp"
+            android:backgroundTint="#19CF20"
+            android:text="Saiba mais"
+            android:textColor="#FFFFFF" />
+
+
+        <TextView
+            android:id="@+id/text_additional_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Data da criação: 13/04/2024\nHora do atendimento: 08:30\nObservação médica: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et lacus vel urna vehicula consequat nec vel massa. Sed nec tristique nulla."
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/more_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_board"
+            android:backgroundTint="#0D1223"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_margin="15dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/history_username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:textSize="18sp"
                 android:layout_marginTop="10dp"
-                android:text="raul Carlos"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:text="@string/observa_es"
+                android:textColor="@color/white"/>
+
 
             <TextView
-                android:id="@+id/history_cpf"
-                android:layout_width="wrap_content"
+                android:id="@+id/aditional_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:text="RG: 34563472323"
-                android:textColor="@color/white"
-                android:textSize="17sp" />
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                android:text="@string/nenhuma_observa_o"
+                android:textColor="@color/white"/>
 
             <TextView
-                android:id="@+id/history_sus"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:text="SUS: 34563472323"
-                android:textColor="@color/white"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/hor_rio_do_atendimento"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/aditional_dateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                android:text="14:45:13"
+                android:textColor="@color/white"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:text="@string/unidade_de_sa_de"
+                android:textColor="@color/white"/>
+
+
+            <TextView
+                android:id="@+id/aditional_helthCenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Tancredo neves"
+                android:textColor="@color/white"/>
+
+
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-
         <TextView
-            android:id="@+id/hisotry_procedure"
-            android:layout_width="wrap_content"
+            android:id="@+id/hisotry_status"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity=""
-            android:layout_margin="16dp"
-            android:text="Tipo: Vacina"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-
-        <TextView
-            android:id="@+id/history_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Data: 13/04/2024"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-
+            android:layout_gravity="bottom"
+            android:background="#2196F3"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Status: Concluido"
+            android:textColor="#39FF41"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/hisotry_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:padding="5dp"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:textColor="#39FF41"
-        android:background="#2196F3"
-        android:text="Status: Concluido"/>
 
 </LinearLayout>

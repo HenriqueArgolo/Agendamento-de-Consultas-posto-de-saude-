@@ -2,6 +2,7 @@ package com.ptn.postotancredo.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ptn.postotancredo.databinding.HistoryObjectBinding
@@ -17,9 +18,25 @@ class HistoricAdapter(
             val user = history.user
             binding.historyUsername.text = String.format("${user.firstName} ${user.lastName}")
             binding.historyCpf.text = String.format("CPF: ${user.cpf}")
-            binding.historySus.text = String.format("CPF: ${user.sus}")
-            binding.hisotryProcedure.text = String.format("Procedimento: ${history.procedures }")
+            binding.historySus.text = String.format("SUS: ${user.sus}")
+            binding.hisotryProcedure.text = String.format("Tipo: ${history.procedures.name }")
             binding.hisotryStatus.text = String.format("Status: ${history.status }")
+            binding.aditionalDateTime.text = history.creationTimesTamp
+            binding.aditionalHelthCenter.text = history.healthCenter
+
+
+            var num = 0
+            binding.buttonShowMore.setOnClickListener {
+                if (num == 0){
+                    binding.moreInfo.visibility = View.VISIBLE
+                    num = 1
+                }else {
+                    binding.moreInfo.visibility = View.GONE
+                    num = 0
+                }
+
+
+            }
         }
     }
 
@@ -38,4 +55,6 @@ class HistoricAdapter(
     override fun getItemCount(): Int {
         return historyList.size
     }
+
+
 }
